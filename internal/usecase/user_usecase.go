@@ -2,7 +2,6 @@ package usecase
 
 import (
 	"context"
-	"fmt"
 	"go-clean-architecture/internal/entity"
 	"go-clean-architecture/internal/model"
 	converter "go-clean-architecture/internal/model/coverter"
@@ -10,6 +9,7 @@ import (
 
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"
+	"github.com/google/uuid"
 	"github.com/sirupsen/logrus"
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
@@ -42,17 +42,6 @@ func (c *UserUseCase) Create(ctx context.Context, request *model.RegisterUserReq
 		return nil, fiber.ErrBadRequest
 	}
 
-	total, err := c.UserRepository.CountById(tx, request.ID)
-	if err != nil {
-		c.Log.Warnf("Failed count user from database : %+v", err)
-		return nil, fiber.ErrInternalServerError
-	}
-
-	if total > 0 {
-		c.Log.Warnf("User already exists : %+v", err)
-		return nil, fiber.ErrConflict
-	}
-
 	password, err := bcrypt.GenerateFromPassword([]byte(request.Password), bcrypt.DefaultCost)
 	if err != nil {
 		c.Log.Warnf("Failed to generate bcrype hash : %+v", err)
@@ -60,12 +49,11 @@ func (c *UserUseCase) Create(ctx context.Context, request *model.RegisterUserReq
 	}
 
 	user := &entity.User{
-		ID:       request.ID,
+		ID:       uuid.New().String(),
 		Password: string(password),
 		Name:     request.Name,
 	}
 
-	fmt.Printf("%+v\n", user)
 	if err := c.UserRepository.Create(tx, user); err != nil {
 		c.Log.Warnf("Failed create user to database : %+v", err)
 		return nil, fiber.ErrInternalServerError

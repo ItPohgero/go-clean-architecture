@@ -21,6 +21,17 @@ func NewUserController(useCase *usecase.UserUseCase, logger *logrus.Logger) *Use
 	}
 }
 
+// Register endpoint to register a new user
+//
+// @Summary Register a new user
+// @Description Register a new user
+// @Tags User
+// @Accept json
+// @Produce json
+// @Param data body model.RegisterUserRequest true "Register user data"
+// @Success 201 {object} model.WebResponse{data=model.UserResponse}
+// @Failure 400 {object} model.WebResponse{data=string}
+// @Router /users/register [post]
 func (c *UserController) Register(ctx *fiber.Ctx) error {
 	request := new(model.RegisterUserRequest)
 
@@ -39,6 +50,17 @@ func (c *UserController) Register(ctx *fiber.Ctx) error {
 	return ctx.JSON(model.WebResponse[*model.UserResponse]{Data: response})
 }
 
+// Login endpoint to login a user
+//
+// @Summary Login a user
+// @Description Login a user
+// @Tags User
+// @Accept json
+// @Produce json
+// @Param data body model.LoginUserRequest true "Login user data"
+// @Success 200 {object} model.WebResponse{data=model.UserResponse}
+// @Failure 400 {object} model.WebResponse{data=string}
+// @Router /users/login [post]
 func (c *UserController) Login(ctx *fiber.Ctx) error {
 	request := new(model.LoginUserRequest)
 	err := ctx.BodyParser(request)
@@ -56,6 +78,17 @@ func (c *UserController) Login(ctx *fiber.Ctx) error {
 	return ctx.JSON(model.WebResponse[*model.UserResponse]{Data: response})
 }
 
+// Current endpoint to get current user
+//
+// @Summary Get current user
+// @Description Get current user
+// @Tags User
+// @Accept json
+// @Produce json
+// @Success 200 {object} model.WebResponse{data=model.UserResponse}
+// @Failure 400 {object} model.WebResponse{data=string}
+// @Security BearerAuth
+// @Router /users/current [get]
 func (c *UserController) Current(ctx *fiber.Ctx) error {
 	auth := middleware.GetUser(ctx)
 
@@ -72,6 +105,17 @@ func (c *UserController) Current(ctx *fiber.Ctx) error {
 	return ctx.JSON(model.WebResponse[*model.UserResponse]{Data: response})
 }
 
+// Logout endpoint to logout a user
+//
+// @Summary Logout a user
+// @Description Logout a user
+// @Tags User
+// @Accept json
+// @Produce json
+// @Success 200 {object} model.WebResponse{data=bool}
+// @Failure 400 {object} model.WebResponse{data=string}
+// @Security BearerAuth
+// @Router /users/logout [get]
 func (c *UserController) Logout(ctx *fiber.Ctx) error {
 	auth := middleware.GetUser(ctx)
 
@@ -88,6 +132,18 @@ func (c *UserController) Logout(ctx *fiber.Ctx) error {
 	return ctx.JSON(model.WebResponse[bool]{Data: response})
 }
 
+// Update endpoint to update a user
+//
+// @Summary Update a user
+// @Description Update a user
+// @Tags User
+// @Accept json
+// @Produce json
+// @Param data body model.UpdateUserRequest true "Update user data"
+// @Success 200 {object} model.WebResponse{data=model.UserResponse}
+// @Failure 400 {object} model.WebResponse{data=string}
+// @Security BearerAuth
+// @Router /users/update [post]
 func (c *UserController) Update(ctx *fiber.Ctx) error {
 	auth := middleware.GetUser(ctx)
 

@@ -24,21 +24,25 @@ type BootstrapConfig struct {
 
 func Bootstrap(config *BootstrapConfig) {
 	// setup repositories
+	healthRepository := repository.NewUserRepository(config.Log)
 	userRepository := repository.NewUserRepository(config.Log)
 
 	// setup use cases
+	healthUseCase := usecase.NewUserUseCase(config.DB, config.Log, config.Validate, healthRepository)
 	userUseCase := usecase.NewUserUseCase(config.DB, config.Log, config.Validate, userRepository)
 
 	// setup controller
+	healthController := http.NewHealthController(healthUseCase, config.Log)
 	userController := http.NewUserController(userUseCase, config.Log)
 
 	// setup middleware
 	authMiddleware := middleware.NewAuth(userUseCase)
 
 	routeConfig := route.RouteConfig{
-		App:            config.App,
-		UserController: userController,
-		AuthMiddleware: authMiddleware,
+		App:              config.App,
+		UserController:   userController,
+		HealthController: healthController,
+		AuthMiddleware:   authMiddleware,
 	}
 	routeConfig.Setup()
 }

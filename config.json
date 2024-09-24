@@ -10,11 +10,11 @@
         "level": 6
     },
     "database": {
-        "username": "root",
+        "username": "postgres",
         "password": "root",
         "host": "localhost",
         "port": 5432,
-        "name": "godesa",
+        "name": "go-clearn-architecture",
         "pool": {
             "idle": 10,
             "max": 100,

@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"go-clean-architecture/internal/config"
+
+	_ "github.com/lib/pq"
 )
 
 func main() {

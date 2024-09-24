@@ -7,8 +7,8 @@ CREATE TABLE
         city VARCHAR(100) NOT NULL,
         state VARCHAR(100) NOT NULL,
         user_id VARCHAR(100) NOT NULL,
-        created_at TIMESTAMP NOT NULL,
-        updated_at TIMESTAMP NOT NULL,
+        created_at BIGINT DEFAULT EXTRACT(EPOCH FROM NOW())::BIGINT NOT NULL,
+        updated_at BIGINT DEFAULT EXTRACT(EPOCH FROM NOW())::BIGINT NOT NULL,
         PRIMARY KEY (id),
         CONSTRAINT fk_addresses_user_id FOREIGN KEY (user_id) REFERENCES users (id)
     );

@@ -23,6 +23,7 @@ func NewUserController(useCase *usecase.UserUseCase, logger *logrus.Logger) *Use
 
 func (c *UserController) Register(ctx *fiber.Ctx) error {
 	request := new(model.RegisterUserRequest)
+
 	err := ctx.BodyParser(request)
 	if err != nil {
 		c.Log.Warnf("Failed to parse request body : %+v", err)

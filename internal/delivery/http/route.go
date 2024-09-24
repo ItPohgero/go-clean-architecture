@@ -19,6 +19,7 @@ func (c *RouteConfig) Setup() {
 }
 
 func (c *RouteConfig) SetupGuestRoute() {
+	c.App.Post("/api/users", c.UserController.Register)
 	c.App.Get("/api/health", c.HealthController.Health)
 }
 

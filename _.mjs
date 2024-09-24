@@ -17,11 +17,6 @@ const rl = readline.createInterface({
 	output: process.stdout,
 });
 
-// Run lint, check, and format
-// runCommand("bun run biome:lint");
-// runCommand("bun run biome:check");
-// runCommand("bun run biome:format");
-
 // Add changes to staging
 runCommand('git add . -- ":!.env"');
 

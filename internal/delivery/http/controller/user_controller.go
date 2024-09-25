@@ -1,9 +1,9 @@
 package http
 
 import (
-	"go-clean-architecture/internal/delivery/middleware"
-	"go-clean-architecture/internal/model"
-	"go-clean-architecture/internal/usecase"
+	"godesa/internal/delivery/middleware"
+	"godesa/internal/model"
+	"godesa/internal/usecase"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/sirupsen/logrus"

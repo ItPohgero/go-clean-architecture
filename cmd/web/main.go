@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"go-clean-architecture/internal/config"
+	"godesa/internal/config"
 )
 
 func main() {

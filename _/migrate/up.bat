@@ -5,7 +5,7 @@ set DB_USER=postgres
 set DB_PASSWORD=root
 set DB_HOST=localhost
 set DB_PORT=5432
-set DB_NAME=go-clearn-architecture
+set DB_NAME=godesa
 set DB_SSL_MODE=disable
 set MIGRATION_PATH=db/migrations
 

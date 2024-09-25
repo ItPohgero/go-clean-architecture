@@ -1,4 +1,4 @@
-module go-clean-architecture
+module godesa
 
 go 1.21.4
 

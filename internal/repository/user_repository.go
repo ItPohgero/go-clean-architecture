@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"go-clean-architecture/internal/entity"
+	"godesa/internal/entity"
 
 	"github.com/sirupsen/logrus"
 	"gorm.io/gorm"

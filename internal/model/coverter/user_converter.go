@@ -1,8 +1,8 @@
 package converter
 
 import (
-	"go-clean-architecture/internal/entity"
-	"go-clean-architecture/internal/model"
+	"godesa/internal/entity"
+	"godesa/internal/model"
 )
 
 func UserToResponse(user *entity.User) *model.UserResponse {

@@ -1,11 +1,11 @@
 package config
 
 import (
-	route "go-clean-architecture/internal/delivery/http"
-	"go-clean-architecture/internal/delivery/http/controller"
-	"go-clean-architecture/internal/delivery/middleware"
-	"go-clean-architecture/internal/repository"
-	"go-clean-architecture/internal/usecase"
+	route "godesa/internal/delivery/http"
+	"godesa/internal/delivery/http/controller"
+	"godesa/internal/delivery/middleware"
+	"godesa/internal/repository"
+	"godesa/internal/usecase"
 
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"

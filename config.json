@@ -1,6 +1,6 @@
 {
     "app": {
-        "name": "go-clean-architecture"
+        "name": "godesa"
     },
     "web": {
         "prefork": false,
@@ -14,7 +14,7 @@
         "password": "root",
         "host": "localhost",
         "port": 5432,
-        "name": "go-clearn-architecture",
+        "name": "godesa",
         "pool": {
             "idle": 10,
             "max": 100,

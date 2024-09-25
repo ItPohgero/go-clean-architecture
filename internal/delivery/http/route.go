@@ -1,7 +1,7 @@
 package route
 
 import (
-	http "go-clean-architecture/internal/delivery/http/controller"
+	http "godesa/internal/delivery/http/controller"
 
 	"github.com/gofiber/fiber/v2"
 )

@@ -1,8 +1,8 @@
 package middleware
 
 import (
-	"go-clean-architecture/internal/model"
-	"go-clean-architecture/internal/usecase"
+	"godesa/internal/model"
+	"godesa/internal/usecase"
 
 	"github.com/gofiber/fiber/v2"
 )

@@ -6,7 +6,7 @@ DB_USER="postgres"
 DB_PASSWORD="root"
 DB_HOST="localhost"
 DB_PORT="5432"
-DB_NAME="go-clearn-architecture"
+DB_NAME="godesa"
 DB_SSL_MODE="disable"
 MIGRATION_PATH="db/migrations"
 

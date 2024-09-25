@@ -2,10 +2,10 @@ package usecase
 
 import (
 	"context"
-	"go-clean-architecture/internal/entity"
-	"go-clean-architecture/internal/model"
-	converter "go-clean-architecture/internal/model/coverter"
-	"go-clean-architecture/internal/repository"
+	"godesa/internal/entity"
+	"godesa/internal/model"
+	converter "godesa/internal/model/coverter"
+	"godesa/internal/repository"
 
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"
